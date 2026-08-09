@@ -1,0 +1,302 @@
+/* =========================================================
+   Cravekart — Checkout Page Stylesheet
+   Builds on menu.css + cart.css (both linked alongside this
+   file). Two-column layout: address/summary on the left,
+   payment on the right, collapsing to one column on mobile.
+   ========================================================= */
+
+.checkout-hero-bg{
+  background-image:
+    linear-gradient(180deg, rgba(20,12,9,.4) 0%, rgba(18,11,8,.88) 68%, var(--bg-void) 100%),
+    url("https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=1920&q=80");
+}
+
+.checkout-section{
+  padding-top: 0;
+}
+
+.checkout-grid{
+  max-width: 1040px;
+  margin: -3.5rem auto 0;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.checkout-col{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.checkout-card{
+  margin: 0;
+  max-width: none;
+}
+
+/* ---------- address ---------- */
+
+.checkout-address-body{
+  padding: 1.2rem 0 1.6rem;
+}
+
+.address-missing-note{
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .85rem;
+  color: var(--chili);
+  font-weight: 700;
+  margin: 0 0 .6rem;
+}
+
+.address-textarea{
+  width: 100%;
+  resize: vertical;
+  min-height: 74px;
+  border: 1.5px solid rgba(36,22,17,.2);
+  border-radius: 10px;
+  padding: .75rem .9rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .92rem;
+  color: var(--ink);
+  background: #fff;
+  transition: border-color .15s ease;
+}
+.address-textarea:focus{
+  outline: none;
+  border-color: var(--chili);
+}
+
+.address-hint{
+  margin: .55rem 0 0;
+  font-size: .75rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- order summary lines ---------- */
+
+.checkout-line-row{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: .55rem 0;
+  border-bottom: 1px dashed rgba(36,22,17,.14);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .9rem;
+  color: var(--ink);
+}
+.checkout-line-qty{
+  color: var(--ink-soft);
+  font-size: .8rem;
+  margin-left: .3rem;
+}
+.checkout-line-amt{
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+
+/* ---------- coupon ---------- */
+
+.coupon-block{
+  display: flex;
+  gap: .6rem;
+  margin-top: 1.1rem;
+}
+.coupon-input{
+  flex: 1 1 auto;
+  border: 1.5px solid rgba(36,22,17,.2);
+  border-radius: 8px;
+  padding: .6rem .8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: var(--ink);
+}
+.coupon-input:focus{ outline: none; border-color: var(--chili); }
+
+.coupon-apply-btn{
+  flex: 0 0 auto;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: #fff;
+  background: var(--chili);
+  border: none;
+  border-radius: 8px;
+  padding: 0 1.2rem;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+.coupon-apply-btn:hover{ background: #E14A2E; }
+.coupon-apply-btn:disabled{ opacity: .6; cursor: not-allowed; }
+
+.coupon-message{
+  min-height: 1.1rem;
+  margin: .5rem 0 0;
+  font-size: .78rem;
+  font-weight: 600;
+}
+.coupon-message.coupon-success{ color: #4C8B2B; }
+.coupon-message.coupon-error{ color: var(--chili); }
+
+.discount-row .discount-amt{ color: #4C8B2B; }
+.grand-total-row{ border-top: 2px dashed rgba(36,22,17,.2); margin-top: .3rem; }
+
+/* ---------- payment ---------- */
+
+.payment-card{ position: sticky; top: 1.5rem; }
+
+.payment-options{
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  margin: 1.1rem 0 0;
+}
+
+.payment-option{
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  border: 1.5px solid rgba(36,22,17,.2);
+  border-radius: 10px;
+  padding: .8rem 1rem;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.payment-option input{ accent-color: var(--chili); width: 16px; height: 16px; }
+.payment-option-label{
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--ink);
+}
+.payment-option.is-selected{
+  border-color: var(--chili);
+  background: rgba(255,90,60,.06);
+}
+
+.upi-app-row{
+  display: flex;
+  gap: .6rem;
+  margin: .9rem 0 0;
+  flex-wrap: wrap;
+}
+.upi-app-btn{
+  flex: 1 1 auto;
+  min-width: 90px;
+  border: 1.5px solid rgba(36,22,17,.2);
+  background: #fff;
+  border-radius: 8px;
+  padding: .6rem .5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, transform .1s ease;
+}
+.upi-app-btn:hover{ transform: translateY(-1px); }
+.upi-app-btn.is-selected{
+  border-color: var(--chili);
+  background: var(--chili);
+  color: #fff;
+}
+
+.confirm-error{
+  min-height: 1.1rem;
+  margin: .7rem 0 0;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--chili);
+  text-align: center;
+}
+
+.cart-checkout-btn:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* ---------- order confirmed overlay ---------- */
+
+.order-confirmed-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 11, 8, 0.75);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.order-confirmed-overlay.is-visible{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.order-confirmed-card{
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 16px;
+  padding: 2.4rem 2.6rem 2.2rem;
+  text-align: center;
+  max-width: 340px;
+  box-shadow: 0 30px 70px -20px rgba(0,0,0,.6);
+  transform: scale(.9);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.order-confirmed-overlay.is-visible .order-confirmed-card{
+  transform: scale(1);
+}
+
+.order-confirmed-card h2{
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 1rem 0 .4rem;
+}
+.order-confirmed-card p{
+  font-size: .9rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.confirm-check{
+  width: 74px;
+  height: 74px;
+}
+.confirm-check-circle{
+  fill: none;
+  stroke: #4C8B2B;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 226;
+  stroke-dashoffset: 226;
+}
+.confirm-check-mark{
+  fill: none;
+  stroke: #4C8B2B;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+}
+.order-confirmed-overlay.is-visible .confirm-check-circle{
+  animation: draw-circle .5s ease forwards;
+}
+.order-confirmed-overlay.is-visible .confirm-check-mark{
+  animation: draw-check .35s .45s ease forwards;
+}
+@keyframes draw-circle{ to { stroke-dashoffset: 0; } }
+@keyframes draw-check{ to { stroke-dashoffset: 0; } }
+
+@media (max-width: 860px){
+  .checkout-grid{ grid-template-columns: 1fr; margin-top: -2.75rem; }
+  .payment-card{ position: static; }
+}
